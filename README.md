@@ -11,7 +11,7 @@ https://the-ranking-project.herokuapp.com/student/all
 También puede correr en local mediante un contenedor docker conectado a Atlas aplicando este comando en la terminal:
 
 ```
-docker run -p 3000:3000 --env DBURL="mongodb+srv://admin:admin@cluster0.7hkah.mongodb.net/ranking?retryWrites=true&w=majority" --env PORT=3000 the-ranking-api
+docker run -p 3000:3000 --env DBURL="mongodb+srv://admin:<password>@cluster0.7hkah.mongodb.net/ranking?retryWrites=true&w=majority" --env PORT=3000 the-ranking-api
 ```
 
 O correr en local conectado a la db local con el siguiente comando:
@@ -21,7 +21,7 @@ docker run -p 3000:3000 --env DBURL="mongodb://host.docker.internal/ranking" the
 ```
 
 ## ¿Cómo funciona?
-Para obtener información debes introducit la url de la api seguido de uno de los siguientes endpoints:
+Para obtener información debes introducir la url de la api seguido de uno de los siguientes endpoints:
 ```
 https://the-ranking-project.herokuapp.com/<endpoint>
 ```
