@@ -4,6 +4,45 @@ from flask import request
 from ..helpers.json_response_students import asJsonResponseStudents
 from bson.json_util import dumps
 
+
+
+@app.route('/')
+def welcome():
+    return '''
+<!DOCTYPE html>
+<html lang="en">
+<center>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api de marta</title>
+</head>
+<body style="background-color:#946B9C;">
+<h1>Esta API funciona correctamente, para obtener información introduce un endpoint.</h1>
+</center>
+<h2>   Student Endpoints:<h2>
+<ul>
+    <li>(GET) /student/create/'name'</li>
+    <li>(GET) /student/all</li>
+    <li>(GET) /student/search/'name'</li>
+</ul>
+<h2>   Lab Endpoints:<h2>
+<ul>
+    <li>(GET) /lab/create/'name'</li>
+    <li>(GET) /lab/'lab_prefix'/search</li>
+    <li>(GET) /lab/'lab'/meme</li>
+</ul>
+<center>
+<img src="https://image.flaticon.com/icons/png/512/1051/1051377.png"/>
+<form>
+    <input type="button" value="Go back" onclick="history.back()">
+</form>
+</body>
+</html>
+'''
+    
+
+
 '''
 Purpose: Create a student and save into DB
 Params: The student name
@@ -25,9 +64,10 @@ def list_students():
     res = db.pull_request.distinct('User')
     return (dumps(res))
 
-
-
-
+'''
+Purpose: Search all pull request of a student
+Params: The student name
+Returns The student pull request info
 '''
 @app.route("/student/search/<name>")
 @asJsonResponseStudents
@@ -35,4 +75,3 @@ def search_student(name):
     query = {'User':name}
     result = db.pull_request.find(query)
     return result
-'''

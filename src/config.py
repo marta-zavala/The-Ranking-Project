@@ -1,5 +1,7 @@
 import os
 import dotenv
+import dns
+
 
 dotenv.load_dotenv()
 

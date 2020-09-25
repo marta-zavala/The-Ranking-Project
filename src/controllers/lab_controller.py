@@ -3,7 +3,6 @@ from src.database import db
 from flask import request
 from bson.json_util import dumps
 from src.controllers.functions import *
-from ..helpers.json_response_labs import asJsonResponseLabs
 from datetime import datetime
 import numpy as np
 
@@ -22,16 +21,6 @@ def create_lab(name):
     return {'_id': str(result.inserted_id)}
 
 
-'''
-@app.route("/lab/search/<name>")
-@asJsonResponseLabs
-def search_lab(name):
-    query = {'Lab':name}
-    result = db.pull_request.find(query)
-    res = 
-    return result
-'''
-
 
 '''
 Purpose: Search student submissions on specific lab
@@ -48,10 +37,6 @@ def searchLab(lab_prefix):
     
     # Percentage of completeness (closed vs open)
     percent = f'{str(int(closed_pr/(opened_pr+closed_pr)*100))}%'
-
-    # List number of missing PR from students
-    missing = db.pull_request.find({"Lab":lab_prefix},{'User':1,'User2':1})
-
     
     # Instructor grade time in hours: (max, min and mean)
     grade_time = db.pull_request.find({"Lab":lab_prefix},{'Open':1,'Closed':1})  
@@ -66,20 +51,12 @@ def searchLab(lab_prefix):
     '· El porcentaje de PR cerradas es':percent,
     f'· El tiempo máximo de corrección del lab {lab_prefix} es': (f'{str(round(max(grade_time_list)/3600,2))}h'),
     f'· El tiempo mínimo de corrección del lab {lab_prefix} es': (f'{str(round(min(grade_time_list)/3600,2))}h'),
-    f'· El tiempo medio de corrección del lab {lab_prefix} es': (f'{str(round(np.mean(grade_time_list)/3600,2))}h'),
-    'Missing PR':missing
+    f'· El tiempo medio de corrección del lab {lab_prefix} es': (f'{str(round(np.mean(grade_time_list)/3600,2))}h')
     }  
     return dumps(result)
 
 
-# Purpose: Ranking of the most used memes for datamad0820 divided by labs
-@app.route("/lab/memeranking")
-def meme_ranking():
-    pass
-
-
 # Purpose: Get a random meme (extracted from the ones used for each student pull request) for that lab.
-
 @app.route("/lab/<lab>/meme")
 def random_meme(lab):
     result=db.pull_request.aggregate([
