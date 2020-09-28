@@ -15,23 +15,31 @@ def welcome():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Api de marta</title>
+    <title>Ironhack DataLabs</title>
 </head>
-<body style="background-color:#946B9C;">
+<body style="background-color:#8FBAB0;">
 <h1>Esta API funciona correctamente, para obtener información introduce un endpoint.</h1>
 </center>
-<h2>   Student Endpoints:<h2>
+<div class="block" style="float: right; width: 45%"> 
+
+<h2>Student Endpoints:<h2>
 <ul>
     <li>(GET) /student/create/'name'</li>
     <li>(GET) /student/all</li>
     <li>(GET) /student/search/'name'</li>
 </ul>
+</div>
+<div class="block" style="float: right; width: 45%">
+
 <h2>   Lab Endpoints:<h2>
 <ul>
     <li>(GET) /lab/create/'name'</li>
     <li>(GET) /lab/'lab_prefix'/search</li>
     <li>(GET) /lab/'lab'/meme</li>
 </ul>
+</div>
+<div style="clear: both"></div>
+</dd>
 <center>
 <img src="https://image.flaticon.com/icons/png/512/1051/1051377.png"/>
 <form>

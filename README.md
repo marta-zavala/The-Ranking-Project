@@ -4,9 +4,9 @@
 
 En este proyecto se ha creado una API de GitHub que permite obtener información sobre los labs y alumnos de Ironhack.
 
-La API está desplegada en Heroku. Por ejemplo:
+La API está desplegada en Heroku. Se puede acceder a ella a través del siguiente link:
 
-https://the-ranking-project.herokuapp.com/student/all
+https://the-ranking-project.herokuapp.com
 
 También puede correr en local mediante un contenedor docker conectado a Atlas aplicando este comando en la terminal:
 
